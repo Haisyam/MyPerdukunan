@@ -1,150 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dukun Sesat | Perdukunan</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-sec fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand font-jakarta" href="#">Dukun Sesat</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./page/info.html">Info Penting</a>
-            </li>
-          </ul>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <title>Website Perdukunan</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+    
+    <body>
+    
+    <div id="video">
+        <div class="preloader">
+            <div class="preloader-bounce">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-      </div>
-    </nav>
 
-    <!-- Header -->
-    <header class="bg-prim text-dark text-center py-5">
-      <div class="container">
-        <h1 class="font-jakarta">Welcome to My Project Perdukunan</h1>
-        <p class="lead">Jangan percaya dukun! Sangat sesat dan menyesatkan.</p>
-      </div>
-    </header>
+        <header id="header">
+            <div class="container-fluid">
+                <div class="navbar">
+                    <a href="#slide01" id="logo" title="Elegance by TemplateMo">
+                        Perdukunan
+                    </a>
+                    <div class="navigation-row">
+                        <nav id="navigation">
+                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                            <div class="nav-box navbar-collapse">
+                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                    <li data-menuanchor="slide01" class="active"><a href="#slide01">Home</a></li>
+                                    <li data-menuanchor="slide02"><a href="#slide02">Penting</a></li>
+                                    <li data-menuanchor="slide03"><a href="#slide03">Features</a></li>
+                                    <li data-menuanchor="slide04"><a href="#slide04">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- Projects Section -->
-    <section class="py-5">
-      <div class="container">
-        <div class="row">
-          <!-- Project Card -->
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card bg-sec text-white h-100">
-              <img
-                src="/img/Dukun.jpg"
-                class="card-img-top"
-                alt="Project Image"
-              />
-              <div class="card-body">
-                <h4 class="card-title">Cek Khodam</h4>
-                <p class="card-text">Cek ada khodam apa di diri kalian.</p>
-              </div>
-              <div class="card-footer mb-3">
-                <a href="./page/khodam.html" class="btn btn-outline-light"
-                  >Lihat</a
-                >
-              </div>
+        <video autoplay muted loop id="myVideo">
+          <source src="images/video-hero.mp4" type="video/mp4">
+        </video>
+
+        <div id="fullpage" class="fullpage-default">
+
+            <div class="section animated-row" data-section="slide01">
+                <div class="section-inner">
+                    <div class="welcome-box">
+                        <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
+                        <h1 class="welcome-title animate" data-animate="fadeInUp">RAMAL SANTUY</h1>
+                        <p class="animate" data-animate="fadeInUp">Situs ini hanya untuk hiburan semata. Informasi di sini tidak dimaksudkan untuk diandalkan untuk keputusan nyata. Dengan menggunakan situs ini, Anda setuju bahwa kontennya hanya untuk hiburan dan humor. Selamat bersenang-senang!</p>
+                        <div class="scroll-down next-section animate data-animate="fadeInUp""><img src="images/mouse-scroll.png" alt=""><span>Scroll Down</span></div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- Project Card -->
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card bg-sec text-white h-100">
-              <img
-                src="/img/Dukun.jpg"
-                class="card-img-top"
-                alt="Project Image"
-              />
-              <div class="card-body">
-                <h4 class="card-title">Kecocokan Pasangan</h4>
-                <p class="card-text">
-                  Meramal cocok atau tidaknya kamu dengan dia.
-                </p>
-              </div>
-              <div class="card-footer mb-3">
-                <a href="./page/status.html" class="btn btn-outline-light"
-                  >Lihat</a
-                >
-              </div>
+
+            <div class="section animated-row" data-section="slide02">
+                <div class="section-inner">
+                    <div class="about-section">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 wide-col-laptop">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="about-contentbox">
+                                            <div class="animate" data-animate="fadeInUp">
+                                                <span>PENTING</span>
+                                                <h2>Disclaimer</h2>
+                                                <p>Situs web ini dan isinya dimaksudkan hanya untuk tujuan hiburan. Informasi yang disediakan di situs ini tidak dimaksudkan untuk digunakan sebagai sumber yang dapat diandalkan untuk meramal atau 
+                                                    membuat keputusan apa pun. Dengan menggunakan situs ini, Anda mengakui bahwa konten ini hanya untuk hiburan dan humor semata, dan Anda setuju untuk tidak menganggap serius konten apa pun.</p>
+                                            </div>
+                                            <div class="facts-list owl-carousel">
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-trophy counter-icon" aria-hidden="true"></i><span class="count-number">999</span> Ramalan Dibuat
+                                                    </div>
+                                                </div>
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-graduation-cap counter-icon" aria-hidden="true"></i><span class="count-number">50</span> Roh Dihubungi
+                                                    </div>
+                                                </div>
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span class="count-number">1234</span> Nasib Diramal
+                                                    </div>
+                                                </div>
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-support counter-icon" aria-hidden="true"></i><span class="count-number">20</span> Artefak Ajaib Dimiliki
+                                                    </div>
+                                                </div>
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-certificate counter-icon" aria-hidden="true"></i><span class="count-number">15</span> Tahun Pengalaman
+                                                    </div>
+                                                </div>
+                                                <div class="item animate" data-animate="fadeInUp">
+                                                    <div class="counter-box">
+                                                        <i class="fa fa-magic counter-icon" aria-hidden="true"></i><span class="count-number">100</span> Ritual Mistis Dilakukan
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <figure class="about-img animate" data-animate="fadeInUp"><img src="images/dukun.jpg" class="rounded" alt=""></figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="section animated-row" data-section="slide03">
+                <div class="section-inner">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 wide-col-laptop">
+                            <div class="title-block animate" data-animate="fadeInUp">
+                                <span>The Features</span>
+                                <h2>Cari yang anda butuhkan</h2>
+                            </div>
+                            <div class="gallery-section">
+                                <div class="gallery-list owl-carousel">
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/khodam.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>CEK KHODAM</h4>
+                                                <p>Cari tahu apakah Anda memiliki khodam yang menemani Anda dan bagaimana cara berkomunikasi dengannya.</p>
+                                                <a href="halaman/cek-khodam.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/jodoh.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>KECOCOKAN PASANGAN</h4>
+                                                <p>Uji kecocokan Anda dengan pasangan berdasarkan tanggal lahir dan karakteristik pribadi.</p>
+                                                <a href="halaman/kecocokan-pasangan.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/inisial.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>CEK INISIAL JODOH</h4>
+                                                <p>Temukan inisial nama jodoh Anda berdasarkan ramalan kuno dan astrologi.</p>
+                                                <a href="halaman/cek-inisial-jodoh.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/zodiak.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>RAMALAN ZODIAK</h4>
+                                                <p>Dapatkan ramalan zodiak terbaru Anda dan lihat apa yang bintang-bintang katakan tentang nasib Anda.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/ramalan-zodiak.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/aura.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>PEMBACAAN AURA</h4>
+                                                <p>Lihat warna aura Anda dan pelajari bagaimana energi Anda mempengaruhi kehidupan sehari-hari.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/pembacaan-aura.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/garistagan.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>PEMBACAAN GARIS TANGAN</h4>
+                                                <p>Pelajari apa yang garis tangan Anda katakan tentang masa depan, kesehatan, dan hubungan Anda.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/pembacaan-garis-tangan.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/tafsirmimpi.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>TAFSIR MIMPI</h4>
+                                                <p>Temukan makna dari mimpi Anda dan apa yang mereka coba sampaikan kepada Anda.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/tafsir-mimpi.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/bolakristal.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>BOLA KRISTAL</h4>
+                                                <p>Gunakan bola kristal untuk melihat gambaran masa depan Anda dan kejadian-kejadian penting yang akan datang.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/bola-kristal.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item animate" data-animate="fadeInUp">
+                                        <div class="portfolio-item">
+                                            <div class="thumb">
+                                                <img src="images/weton.jpg" alt="">
+                                            </div>
+                                            <div class="thumb-inner animate" data-animate="fadeInUp">
+                                                <h4>PERHITUNGAN WETON</h4>
+                                                <p>Perhitungan weton Jawa untuk mengetahui hari baik dan kecocokan dengan pasangan.</p>
+                                                <!-- <button class="btn btn-primary">Show</button> -->
+                                                <a href="halaman/perhitungan-weton.html" class="btn btn-primary">Show</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- Project Card -->
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card bg-sec text-white h-100">
-              <img
-                src="/img/Dukun.jpg"
-                class="card-img-top"
-                alt="Project Image"
-              />
-              <div class="card-body">
-                <h4 class="card-title">Cek Inisial Jodoh</h4>
-                <p class="card-text">Meramal inisial jodoh anda.</p>
-              </div>
-              <div class="card-footer mb-3">
-                <a href="./page/inisial.html" class="btn btn-outline-light"
-                  >Lihat</a
-                >
-              </div>
+
+            <div class="section animated-row" data-section="slide04">
+                <div class="section-inner">
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 wide-col-laptop">
+                            <div class="title-block animate" data-animate="fadeInUp">
+                                <span>Contact</span>
+                                <h2>HUBUNGI TIM KAMI</h2>
+                            </div>
+                            <div class="contact-section">
+                                <div class="row">
+                                    <div class="col-md-6 animate" data-animate="fadeInUp">
+                                        <div class="contact-box">
+                                            <div class="contact-row">
+                                                <i class="fa fa-map-marker"></i>Indonecia
+                                            </div>
+                                            <div class="contact-row">
+                                                <i class="fa fa-phone"></i>08123456789
+                                            </div>
+                                            <div class="contact-row">
+                                                <i class="fa fa-envelope"></i>perdukunan@gmail.com
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 animate" data-animate="fadeInUp">
+                                        <form id="ajax-contact" method="post" action="#">
+                                            <div class="input-field">
+                                                <input type="text" class="form-control" name="name" id="name" required placeholder="Name">
+                                            </div>
+                                            <div class="input-field">
+                                                <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
+                                            </div>
+                                            <div class="input-field">
+                                                <textarea class="form-control" name="message" id="message" required placeholder="Message"></textarea>
+                                            </div>
+                                            <button class="btn" type="submit">Submit</button>
+                                        </form>
+                                        <div id="form-messages" class="mt-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- More project cards can be added here -->
         </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-4 bg-sec text-white-50">
-      <div class="container text-center">
-        <small
-          >&copy; 2024 My Perdukunan |
-          <a
-            href="https://github.com/Haisyam"
-            class="text-white-50"
-            style="text-decoration: none"
-            >MhmdKhrzmi | </a
-          >
-          <a
-            href="https://github.com/zvsaan"
-            class="text-white-50"
-            style="text-decoration: none"
-            >Fauzy</a
-          ></small
-        >
-      </div>
-    </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <div id="social-icons">
+            <div class="text-right">
+                <ul class="social-icons">
+                    <li><a href="https://github.com/zvsaan" target="_blank" title="Github"><i class="fa fa-github"></i></a></li><br>
+                    <li><a href="https://github.com/Haisyam" target="_blank" title="Github"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>  
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/fullpage.min.js"></script>
+
+    <script src="js/scrolloverflow.js"></script>
+
+    <script src="js/owl.carousel.min.js"></script>
+
+    <script src="js/jquery.inview.min.js"></script>
+
+    <script src="js/form.js"></script>
+
+    <script src="js/custom.js"></script>
+
+
   </body>
 </html>
