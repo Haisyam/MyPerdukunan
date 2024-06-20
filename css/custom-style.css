@@ -23,3 +23,36 @@
 .back-button {
     margin-top: 100px;
 }
+
+.form-control[type="date"] {
+    position: relative;
+    padding: 10px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.swal2-popup {
+    font-size: 1.1rem !important;
+}
+
+.camera {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.camera video {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.camera button {
+    margin-top: 10px;
+}

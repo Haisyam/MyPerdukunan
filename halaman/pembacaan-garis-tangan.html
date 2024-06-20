@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <title>Cek Garis Tangan</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/fullpage.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/templatemo-style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/custom-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.css">
+    <style>
+        .back-button {
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .swal2-popup {
+            font-size: 1.1rem !important;
+        }
+
+        .camera {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .camera video {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .camera button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="video">
+    <div class="preloader">
+        <div class="preloader-bounce">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container-fluid">
+            <div class="navbar">
+                <a href="../index.html" id="logo" title="Elegance by TemplateMo">
+                    Perdukunan
+                </a>
+                <div class="navigation-row">
+                    <nav id="navigation">
+                        <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                        <div class="nav-box navbar-collapse">
+                            <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                <li><a href="../index.html">Home</a></li>
+                                <li><a href="../index.html#slide02">Penting</a></li>
+                                <li><a href="../index.html#slide03">Features</a></li>
+                                <li><a href="../index.html#slide04">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section animated-row" data-section="slide01">
+        <div class="section-inner">
+            <div class="welcome-box">
+                <h1 class="welcome-title animate" data-animate="fadeInUp">CEK GARIS TANGAN</h1>
+                <p class="animate" data-animate="fadeInUp">Ambil foto tangan Anda untuk melihat hasil bacaan garis tangan yang lucu dan menghibur.</p>
+                <div class="container text-center mt-5">
+                    <div class="camera">
+                        <video id="video" width="320" height="240" autoplay></video>
+                        <button id="snap" class="btn btn-primary">Ambil Foto</button>
+                    </div>
+                    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+                </div>
+                <a href="../index.html" class="back-button btn btn-primary animate" data-animate="fadeInUp">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/fullpage.min.js"></script>
+<script src="../js/scrolloverflow.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.inview.min.js"></script>
+<script src="../js/form.js"></script>
+<script src="../js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.js"></script>
+
+<script>
+    // Camera setup
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const snapButton = document.getElementById('snap');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+            video.srcObject = stream;
+        })
+        .catch((err) => {
+            console.error("Error accessing the camera: " + err);
+        });
+
+    snapButton.addEventListener('click', function() {
+        context.drawImage(video, 0, 0, 320, 240);
+        const dataURL = canvas.toDataURL('image/png');
+        // Display the result
+        displayResult();
+    });
+
+    function displayResult() {
+        const readings = [
+            "Garis Kehidupan: Wah, kayaknya hari ini kamu bakal nemu sebatang cokelat di tempat yang nggak disangka-sangka. Jangan lupa bagi-bagi ya!",
+            "Garis Cinta: Eits, garis cintamu bilang ada kucing tetangga yang bakal jatuh cinta sama kamu dan ngikutin kemana-mana. Siapin makanan kucing deh!",
+            "Garis Keberuntungan: Garis keberuntunganmu nunjukkin kamu bakal nemu koin di jalan, tapi cuma bisa dipake buat beli permen rasa duren.",
+            "Garis Karir: Kayaknya kamu bakal jadi CEO perusahaan mainan tiup nih. Siap-siap meeting penting bareng balon ya!",
+            "Garis Kesehatan: Garis kesehatanmu bilang kamu bakal seger banget abis tidur siang di bawah pohon mangga. Hati-hati aja sama mangganya yang jatuh!",
+            "Garis Perjalanan: Motor kamu kayaknya bakal hilang hari ini, tapi tenang, ternyata cuma lupa parkir di belakang rumah. Selamat mencari!",
+            "Garis Hobi: Garis hobimu nunjukkin kamu bakal jago main harmonika. Jangan kaget kalo tetangga mulai pesen tiket buat konser mini kamu.",
+            "Garis Misteri: Garis misterimu seru banget, katanya kamu bakal nemu tanaman di halaman yang bisa ngomong. Siap-siap diskusi soal cuaca deh!",
+            "Garis Makanan: Garis makananmu bilang kamu bakal masak enak banget hari ini, tapi sayang, semua orang di rumah lagi diet. Jadi lebih banyak buat kamu sendiri deh!",
+            "Garis Tekno: Garis teknologimu bilang HP kamu bakal mulai ngomong sendiri dan ngasih saran nggak penting. Contohnya, 'Jangan lupa kasih makan tanaman plastik kamu!'",
+            "Garis Teman: Garis teman kamu bilang bakal ada temen lama yang muncul bawa cerita-cerita kocak masa lalu. Siap-siap ketawa sampai perut sakit!",
+            "Garis Duit: Garis duit kamu bilang dompet kamu bakal penuh, tapi penuh sama struk belanjaan. Waktunya beres-beres dompet!",
+            "Garis Tidur: Garis tidurmu nunjukkin kamu bakal mimpi ketemu selebriti favorit dan ngobrol panjang lebar. Bangun-bangun malah lupa semuanya!",
+            "Garis Jajan: Garis jajanan kamu bilang hari ini semua tukang jajanan favorit kamu bakal muncul di depan rumah. Siap-siap kalap deh!",
+            "Garis Liburan: Garis liburanmu bilang kamu bakal dapet tiket gratis buat liburan, tapi cuma buat nonton video travel di YouTube. Ya lumayan lah, kan hemat!",
+            "Garis Belanja: Garis belanja kamu bilang bakal ada diskon gede di toko favorit, tapi cuma buat barang yang kamu nggak butuhin. Ya tetep aja seru buat liat-liat!",
+            "Garis Olahraga: Garis olahragamu bilang kamu bakal nemuin hobi baru dalam yoga, tapi lebih banyak ketawanya daripada yoganya. Yang penting happy!",
+            "Garis Musik: Garis musik kamu bilang kamu bakal dapet inspirasi buat nulis lagu, tapi lagunya cuma tentang mie instan. Unik banget kan!",
+            "Garis Film: Garis film kamu bilang kamu bakal nonton film yang bikin kamu nangis, tapi bukan karena sedih, tapi karena ketawa sampe nangis!",
+            "Garis Petualangan: Garis petualangan kamu bilang kamu bakal nemu harta karun di taman belakang, ternyata cuma mainan lama yang hilang. Tetep seru kan?"
+        ];
+        const randomReading = readings[Math.floor(Math.random() * readings.length)];
+        Swal.fire({
+            title: 'Hasil Bacaan Garis Tangan',
+            text: randomReading,
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    }
+</script>
+
+</body>
+</html>
