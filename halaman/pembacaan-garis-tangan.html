@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/custom-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.css">
+
     <style>
         .back-button {
             margin-top: 20px; /* Adjust the margin as needed */
@@ -32,19 +33,17 @@
             font-size: 1.1rem !important;
         }
 
-        .camera {
+        .camera-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             margin-top: 20px;
         }
 
-        .camera video {
+        video {
             border: 2px solid #ddd;
             border-radius: 5px;
-        }
-
-        .camera button {
-            margin-top: 10px;
+            max-width: 100%;
         }
     </style>
 </head>
@@ -88,11 +87,12 @@
                 <h1 class="welcome-title animate" data-animate="fadeInUp">CEK GARIS TANGAN</h1>
                 <p class="animate" data-animate="fadeInUp">Ambil foto tangan Anda untuk melihat hasil bacaan garis tangan yang lucu dan menghibur.</p>
                 <div class="container text-center mt-5">
-                    <div class="camera">
-                        <video id="video" width="320" height="240" autoplay></video>
-                        <button id="snap" class="btn btn-primary">Ambil Foto</button>
+                    <div class="camera-container">
+                        <button id="start-camera" class="btn btn-primary">Mulai Kamera</button>
+                        <video id="video" width="320" height="240" autoplay style="display:none;"></video>
+                        <button id="snap" class="btn btn-primary" style="display:none;">Ambil Foto</button>
+                        <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
                     </div>
-                    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
                 </div>
                 <a href="../index.html" class="back-button btn btn-primary animate" data-animate="fadeInUp">
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
@@ -113,23 +113,30 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.js"></script>
 
 <script>
-    // Camera setup
+    const startCameraButton = document.getElementById('start-camera');
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const snapButton = document.getElementById('snap');
 
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-            video.srcObject = stream;
-        })
-        .catch((err) => {
-            console.error("Error accessing the camera: " + err);
-        });
+    startCameraButton.addEventListener('click', function() {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+                video.style.display = 'block';
+                snapButton.style.display = 'block';
+                startCameraButton.style.display = 'none';
+            })
+            .catch((err) => {
+                console.error("Error accessing the camera: " + err);
+            });
+    });
 
     snapButton.addEventListener('click', function() {
         context.drawImage(video, 0, 0, 320, 240);
         const dataURL = canvas.toDataURL('image/png');
+        video.style.display = 'none';
+        snapButton.style.display = 'none';
         // Display the result
         displayResult();
     });
@@ -157,9 +164,12 @@
             "Garis Film: Garis film kamu bilang kamu bakal nonton film yang bikin kamu nangis, tapi bukan karena sedih, tapi karena ketawa sampe nangis!",
             "Garis Petualangan: Garis petualangan kamu bilang kamu bakal nemu harta karun di taman belakang, ternyata cuma mainan lama yang hilang. Tetep seru kan?"
         ];
+
         const randomReading = readings[Math.floor(Math.random() * readings.length)];
+
+        // Tampilkan hasil dengan SweetAlert
         Swal.fire({
-            title: 'Hasil Bacaan Garis Tangan',
+            title: `Hasil Bacaan Garis Tangan`,
             text: randomReading,
             icon: 'info',
             confirmButtonText: 'OK'
