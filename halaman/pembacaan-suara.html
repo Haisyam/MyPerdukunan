@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recognition</title>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/fullpage.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/templatemo-style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/custom-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.css">
+    <style>
+        .back-button {
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .swal2-popup {
+            font-size: 1.1rem !important;
+        }
+        .voice-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="video">
+    <div class="preloader">
+        <div class="preloader-bounce">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container-fluid">
+            <div class="navbar">
+                <a href="../index.html" id="logo" title="Elegance by TemplateMo">
+                    Perdukunan
+                </a>
+                <div class="navigation-row">
+                    <nav id="navigation">
+                        <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                        <div class="nav-box navbar-collapse">
+                            <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                <li><a href="../index.html">Home</a></li>
+                                <li><a href="../index.html#slide02">Penting</a></li>
+                                <li><a href="../index.html#slide03">Features</a></li>
+                                <li><a href="../index.html#slide04">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section animated-row" data-section="slide01">
+        <div class="section-inner">
+            <div class="welcome-box">
+                <h1 class="welcome-title animate" data-animate="fadeInUp">Voice Recognition</h1>
+                <p class="animate" data-animate="fadeInUp">Rekam suara Anda dan lihat hasilnya!</p>
+                <div class="container text-center mt-5">
+                    <div class="voice-container">
+                        <button id="start-record" class="btn btn-primary">Mulai Rekam</button>
+                        <button id="stop-record" class="btn btn-danger" style="display:none;">Stop Rekam</button>
+                    </div>
+                </div>
+                <a href="../index.html" class="back-button btn btn-primary animate" data-animate="fadeInUp">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/fullpage.min.js"></script>
+<script src="../js/scrolloverflow.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.inview.min.js"></script>
+<script src="../js/form.js"></script>
+<script src="../js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.js"></script>
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    // Check for browser support
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'id-ID'; // Set language to Indonesian
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        const startRecordButton = document.getElementById('start-record');
+        const stopRecordButton = document.getElementById('stop-record');
+
+        startRecordButton.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.start();
+
+                    mediaRecorder.ondataavailable = function(event) {
+                        audioChunks.push(event.data);
+                    };
+
+                    recognition.start();
+                    startRecordButton.style.display = 'none';
+                    stopRecordButton.style.display = 'block';
+                });
+        });
+
+        stopRecordButton.addEventListener('click', () => {
+            recognition.stop();
+            mediaRecorder.stop();
+            startRecordButton.style.display = 'block';
+            stopRecordButton.style.display = 'none';
+
+            mediaRecorder.onstop = function() {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/mpeg-3' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = audioUrl;
+                downloadLink.download = 'recording.mp3';
+                downloadLink.innerText = 'Download Rekaman';
+
+                audioChunks = [];
+
+                const responses = [
+                    "Suara lu kek jamet nyasar ke mic, ngapain coba?",
+                    "Denger-denger suara lu, jadi inget tukang siomay keliling.",
+                    "Wah, suara lu kayak lagi iklan sirup marjan, manis banget.",
+                    "Suara lu bikin kuping gatel, coba pake headset deh.",
+                    "Serius, suara lu kek lagi ngamen di busway, tapi gagal total.",
+                    "Dari suara lu, kayaknya lu doyan banget nyanyi di kamar mandi, ya?",
+                    "Suara lu unik banget, kayak suara merpati ketabrak jendela.",
+                    "Eh, suara lu kek abis ngunyah kerupuk, renyah banget!",
+                    "Dengerin suara lu, bikin inget lagu jadul tahun 90an, nostalgia deh.",
+                    "Suara lu kedengeran kayak presenter TV yang baru belajar ngomong."
+                ];
+
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+
+                Swal.fire({
+                    title: 'Hasil Rekaman Suara',
+                    text: randomResponse,
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    footer: `
+                        <audio controls>
+                            <source src="${audioUrl}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <br>
+                        <a href="${audioUrl}" download="recording.mp3" class="btn btn-success mt-2">Download Rekaman</a>
+                    `
+                });
+            };
+        });
+
+        recognition.onresult = function(event) {
+            const result = event.results[0][0].transcript;
+            console.log(result);
+        };
+
+        recognition.onerror = function(event) {
+            console.error("Error occurred in recognition: " + event.error);
+            Swal.fire({
+                title: 'Error',
+                text: `Terjadi kesalahan: ${event.error}`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            startRecordButton.style.display = 'block';
+            stopRecordButton.style.display = 'none';
+        };
+    } else {
+        Swal.fire({
+            title: 'Error',
+            text: 'Browser Anda tidak mendukung Web Speech API',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+</script>
+</body>
+</html>

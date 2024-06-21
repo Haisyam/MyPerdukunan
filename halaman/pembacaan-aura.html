@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <title>Cek Aura</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/fullpage.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/templatemo-style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/custom-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.css">
+</head>
+<body>
+
+<div id="video">
+    <div class="preloader">
+        <div class="preloader-bounce">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container-fluid">
+            <div class="navbar">
+                <a href="../index.html" id="logo" title="Elegance by TemplateMo">
+                    Perdukunan
+                </a>
+                <div class="navigation-row">
+                    <nav id="navigation">
+                        <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                        <div class="nav-box navbar-collapse">
+                            <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                <li><a href="../index.html">Home</a></li>
+                                <li><a href="../index.html#slide02">Penting</a></li>
+                                <li><a href="../index.html#slide03">Features</a></li>
+                                <li><a href="../index.html#slide04">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section animated-row" data-section="slide01">
+        <div class="section-inner">
+            <div class="welcome-box">
+                <h1 class="welcome-title animate" data-animate="fadeInUp">CEK AURA</h1>
+                <p class="animate" data-animate="fadeInUp">Masukkan informasi di bawah ini untuk mengetahui aura Anda.</p>
+                <div class="container text-center mt-5">
+                    <form id="auraForm">
+                        <div class="form-group mb-3">
+                            <label for="namaLengkap">Nama Lengkap:</label>
+                            <input type="text" class="form-control text-center" id="namaLengkap" name="namaLengkap" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="warnaFavorit">Warna Favorit:</label>
+                            <select class="form-control text-center" id="warnaFavorit" name="warnaFavorit" required>
+                                <option value="Merah">Merah</option>
+                                <option value="Biru">Biru</option>
+                                <option value="Hijau">Hijau</option>
+                                <option value="Kuning">Kuning</option>
+                                <option value="Oranye">Oranye</option>
+                                <option value="Ungu">Ungu</option>
+                                <option value="Putih">Putih</option>
+                                <option value="Hitam">Hitam</option>
+                                <option value="Coklat">Coklat</option>
+                                <option value="Abu-abu">Abu-abu</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="perasaanSaatIni">Perasaan Saat Ini:</label>
+                            <input type="text" class="form-control text-center" id="perasaanSaatIni" name="perasaanSaatIni" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cek Aura</button>
+                    </form>
+                </div>
+                <a href="../index.html" class="back-button btn btn-primary animate" data-animate="fadeInUp">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/fullpage.min.js"></script>
+<script src="../js/scrolloverflow.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.inview.min.js"></script>
+<script src="../js/form.js"></script>
+<script src="../js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.js"></script>
+
+<script>
+    document.getElementById("auraForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        let namaLengkap = document.getElementById("namaLengkap").value;
+        let warnaFavorit = document.getElementById("warnaFavorit").value;
+        let perasaanSaatIni = document.getElementById("perasaanSaatIni").value;
+
+        const hasilAura = [
+            "Dari yang gua liat, aura lu kek jembut, kusut banget. Mungkin elu butuh pijat refleksi deh.",
+            "Eh brok, aura lu kek pelangi, warna-warni banget. Mungkin elu abis nonton film Disney ya?",
+            "Aura lu kelihatan kayak awan mendung. Coba deh lebih sering ketawa biar cerah lagi.",
+            "Gila, aura lu kayak hutan belantara, liar dan penuh misteri. Elu petualang sejati nih!",
+            "Waduh, aura lu kek lampu disko, nyala kedip-kedip. Mungkin elu kebanyakan begadang.",
+            "Aura lu kek es krim, lembut tapi dingin. Coba deh lebih banyak hang out sama temen-temen.",
+            "Dari aura lu, gua liat elu kayak ikan koi, tenang tapi berkilau. Asik nih hidup lu.",
+            "Aura lu kek sepatu bekas, banyak jejak-jejak masa lalu. Move on brok, masa depan nunggu!",
+            "Aura lu kayak Wi-Fi gratisan, banyak yang pengen deket. Elu populer banget sih.",
+            "Gua liat aura lu kayak taman bunga, penuh warna dan hidup. Inspiratif banget elu!",
+            "Aura lu kek donat, ada bolong di tengah. Mungkin elu lagi cari sesuatu yang hilang.",
+            "Dari yang gua liat, aura lu kayak jalan tol, lurus tapi kenceng. Fokus banget elu!",
+            "Aura lu kayak layangan putus, terbang tapi gak jelas arah. Santai dikit brok, nikmatin perjalanan!",
+            "Waduh, aura lu kek kopi hitam, pekat dan penuh energi. Semangat banget hidup elu!",
+            "Aura lu kayak puzzle, banyak potongan yang belum tersusun. Elu butuh waktu buat nyelesain semuanya.",
+            "Eh, aura lu kek kucing garong, liar tapi lucu. Elu pasti sering bikin orang ketawa.",
+            "Aura lu kayak buku tua, penuh cerita dan pengalaman. Banyak hal seru yang elu bisa bagi.",
+        ];
+
+        const randomAura = hasilAura[Math.floor(Math.random() * hasilAura.length)];
+
+        // Tampilkan hasil dengan SweetAlert
+        Swal.fire({
+            title: 'Hasil Pembacaan Aura',
+            text: randomAura,
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+</script>
+
+</body>
+</html>

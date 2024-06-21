@@ -112,7 +112,6 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
-    // Inisialisasi flatpickr pada input tanggal
     flatpickr("#tanggalLahir", {
         dateFormat: "Y-m-d",
         altInput: true,
@@ -121,7 +120,7 @@
     });
 
     document.getElementById("wetonForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the form from submitting
+        event.preventDefault();
 
         let tanggalLahir = new Date(document.getElementById("tanggalLahir").value);
 

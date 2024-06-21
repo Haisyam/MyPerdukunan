@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.css">
 
     <style>
+
         .back-button {
-            margin-top: 20px; /* Adjust the margin as needed */
+            margin-top: 20px;
         }
 
         .container {
@@ -44,12 +45,17 @@
             border: 2px solid #ddd;
             border-radius: 5px;
             max-width: 100%;
+            background: transparent;
+        }
+
+        canvas {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-<div id="video">
+<div class="video">
     <div class="preloader">
         <div class="preloader-bounce">
             <span></span>
@@ -91,7 +97,7 @@
                         <button id="start-camera" class="btn btn-primary">Mulai Kamera</button>
                         <video id="video" width="320" height="240" autoplay style="display:none;"></video>
                         <button id="snap" class="btn btn-primary" style="display:none;">Ambil Foto</button>
-                        <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+                        <canvas id="canvas" width="320" height="240"></canvas>
                     </div>
                 </div>
                 <a href="../index.html" class="back-button btn btn-primary animate" data-animate="fadeInUp">
@@ -100,7 +106,7 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
 
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -113,35 +119,39 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.15/dist/sweetalert2.min.js"></script>
 
 <script>
-    const startCameraButton = document.getElementById('start-camera');
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const snapButton = document.getElementById('snap');
+    let video = document.getElementById('video');
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+    let snapButton = document.getElementById('snap');
+    let startCameraButton = document.getElementById('start-camera');
 
     startCameraButton.addEventListener('click', function() {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then((stream) => {
-                video.srcObject = stream;
-                video.style.display = 'block';
-                snapButton.style.display = 'block';
-                startCameraButton.style.display = 'none';
-            })
-            .catch((err) => {
-                console.error("Error accessing the camera: " + err);
-            });
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.style.display = 'block';
+                    snapButton.style.display = 'block';
+                    startCameraButton.style.display = 'none';
+                })
+                .catch(function(err) {
+                    console.error("Error accessing the camera: " + err);
+                });
+        } else {
+            console.log("Camera API is not supported by your browser");
+        }
     });
 
     snapButton.addEventListener('click', function() {
-        context.drawImage(video, 0, 0, 320, 240);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
         const dataURL = canvas.toDataURL('image/png');
         video.style.display = 'none';
         snapButton.style.display = 'none';
-        // Display the result
-        displayResult();
+        video.srcObject.getTracks().forEach(track => track.stop()); // Stop the video stream
+        displayResult(dataURL);
     });
 
-    function displayResult() {
+    function displayResult(dataURL) {
         const readings = [
             "Garis Kehidupan: Wah, kayaknya hari ini kamu bakal nemu sebatang cokelat di tempat yang nggak disangka-sangka. Jangan lupa bagi-bagi ya!",
             "Garis Cinta: Eits, garis cintamu bilang ada kucing tetangga yang bakal jatuh cinta sama kamu dan ngikutin kemana-mana. Siapin makanan kucing deh!",
@@ -171,8 +181,13 @@
         Swal.fire({
             title: `Hasil Bacaan Garis Tangan`,
             text: randomReading,
+            imageUrl: dataURL,
+            imageAlt: 'Foto Garis Tangan',
             icon: 'info',
             confirmButtonText: 'OK'
+        }).then(() => {
+            // Tampilkan kembali tombol "Mulai Kamera" setelah menutup alert
+            startCameraButton.style.display = 'block';
         });
     }
 </script>
