@@ -1,49 +1,35 @@
-$(function() {
+$(document).ready(function() {
+    $('#ajax-contact').submit(function(event) {
+        event.preventDefault(); // Prevent the form from submitting
 
-	// Get the form.
-	var form = $('#ajax-contact');
+        // Show loading indicator (optional)
+        $('#form-messages').text('Loading...');
 
-	// Get the messages div.
-	var formMessages = $('#form-messages');
+        // Collect form data
+        var formData = {
+            service_id: 'service_bxli9p8', // ganti dengan service ID Anda
+            template_id: 'template_vwpvc6c', // ganti dengan template ID Anda
+            user_id: 'ho1KdGNVC068GPI4C', // ganti dengan user ID Anda
+            template_params: {
+                'from_name': $('#name').val(),
+                'from_email': $('#email').val(),
+                'message': $('#message').val(),
+                'to_name': 'Admin'
+            }
+        };
 
-	// Set up an event listener for the contact form.
-	$(form).submit(function(e) {
-		// Stop the browser from submitting the form.
-		e.preventDefault();
-
-		// Serialize the form data.
-		var formData = $(form).serialize();
-
-		// Submit the form using AJAX.
-		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
-			data: formData
-		})
-		.done(function(response) {
-			// Make sure that the formMessages div has the 'success' class.
-			$(formMessages).removeClass('bg-danger');
-			$(formMessages).addClass('bg-success');
-
-			// Set the message text.
-			$(formMessages).text('Your message successfully sent');
-
-			// Clear the form.
-			$('#name, #email, #message').val('');			
-		})
-		.fail(function(data) {
-			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('bg-success');
-			$(formMessages).addClass('bg-danger');
-
-			// Set the message text.
-			if (data.responseText !== '') {
-				$(formMessages).text(data.responseText);
-			} else {
-				$(formMessages).text('Oops! An error occured and your message could not be sent.');
-			}
-		});
-
-	});
-
+        // Use EmailJS to send email
+        $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json'
+        }).done(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            $('#form-messages').text('Pesan berhasil dikirim!'); // Show success message
+            $('#ajax-contact')[0].reset(); // Reset the form
+        }).fail(function(error) {
+            console.error('FAILED...', error);
+            $('#form-messages').text('Gagal mengirim pesan. Silakan coba lagi.'); // Show error message
+        });
+    });
 });
